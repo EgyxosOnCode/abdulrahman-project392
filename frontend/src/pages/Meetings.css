@@ -1,0 +1,71 @@
+.meetings-container {
+  padding: 20px;
+  color: white;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+.notification-toggle {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #ccc;
+  background: #111;
+  padding: 6px 18px;
+  border-radius: 10px;
+  gap: 10px; /* يضيف مسافة بين الزر والنص */
+  position: absolute;
+  top: 24px; /* تحريكه لأسفل */
+  right: 380px; /* تحريكه لليسار بعيدًا عن البروفايل */
+  z-index: 10;
+}
+
+.notification-toggle input {
+  margin-right: 6px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+
+
+.meetings-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* ترتيب البطاقات مثل Dashboard */
+  gap: 20px;
+}
+
+.meeting-card {
+  background: linear-gradient(0deg, rgba(144,53,59,0.086) 0%, rgba(190,110,110,0) 41%, rgba(144,53,59,0.086) 100%);
+  padding: 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+.meeting-card:hover {
+  transform: translateY(-5px);
+  background: linear-gradient(0deg, rgba(144, 53, 59, 0.187) 0%, rgba(190,110,110,0) 41%, rgba(144,53,59,0.086) 100%);
+}
+
+.meeting-card h3 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #9a3f4c;
+}
+
+.meeting-card p {
+  margin: 5px 0;
+  color: #ccc;
+  font-size: 16px;
+}
+
+.meeting-card p strong {
+  color: #9a3f4c;
+}

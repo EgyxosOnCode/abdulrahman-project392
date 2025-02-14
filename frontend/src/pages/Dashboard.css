@@ -1,0 +1,679 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  cursor: default;
+  overflow-x: hidden;
+}
+
+body {
+  background: linear-gradient(135deg, #000000, #160b0c);
+  color: white;
+}
+
+
+
+/* ================================================
+   الإعدادات العامة
+   ================================================ */
+
+/* الحاوية الرئيسية */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto; /* التمرير العمودي مفعل دائماً */
+}
+
+/* Sidebar - التصميم الافتراضي للشاشات الكبيرة */
+.sidebar {
+  background: linear-gradient(135deg, #0b0b0b, #160b0c);
+  width: 280px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 200;
+  -webkit-box-shadow: 5px -1px 12px 0px rgba(22,11,12,1);
+  -moz-box-shadow: 5px -1px 12px 0px rgba(22,11,12,1);
+  box-shadow: 5px -1px 12px 0px rgb(12, 7, 7);
+}
+
+/* تحسين تنسيق الشعار واسم الموقع */
+.logo-section {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* توسيط المحتوى */
+  gap: 10px; /* إضافة مسافة بين اللوجو والنص */
+  padding: 15px 0; /* توسيع التباعد */
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* تحسين حجم اللوجو */
+.logo {
+  width: 90px; /* تقليل الحجم ليبدو أكثر تناسقًا */
+  height: 90px;
+  filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.026)); /* إضافة ظل بسيط */
+}
+
+/* تحسين نص اسم الموقع */
+.logo-text {
+  font-size: 1.8rem; /* زيادة الحجم */
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase; /* جعل الأحرف كبيرة */
+  letter-spacing: 1.2px; /* توسيع الأحرف قليلاً */
+  transition: 0.3s ease-in-out;
+}
+
+.logo-subtext {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7); /* لون أخف لتمييزه */
+  text-transform: uppercase;
+  letter-spacing: 4.4px;
+  margin-top: -5px; /* تقليل المسافة بين الكلمتين */
+}
+
+
+/* مربع بروفايل المستخدم */
+.user-profile-box {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  background-color: #0d0d0d;
+  padding: 10px 15px;
+  border: 1px solid #9a3f4d54;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 300;
+  cursor: pointer;
+}
+
+.user-profile-box img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.user-profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-profile-info .user-name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.user-profile-info .user-role {
+  font-size: 0.9rem;
+  color: #ff5555;
+}
+
+.dropdown-icon {
+  margin-left: auto;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+/* القائمة المنسدلة للبروفايل */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #0d0d0de3;
+  border: 1px solid #9a3f4d54;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin-top: 5px;
+  padding: 10px;
+  z-index: 350;
+  cursor: default;
+}
+
+.dropdown-section {
+  margin-bottom: 10px;
+}
+
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #555555;
+  margin-bottom: 5px;
+  padding-bottom: 3px;
+}
+
+.dropdown-title {
+  flex: 1;
+  border-radius: 50%;
+}
+
+.dropdown-section ul:not(.menuLogoutButton) {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+#managementcat, #managementicon {
+  color: rgba(214, 58, 58, 0.4);
+}
+
+.dropdown-section ul li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  color: #ffffff;
+  padding: 5px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.dropdown-section ul .dropdownNormalTitle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menuLogoutButton {
+  background: rgba(64, 24, 24, 0.3);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.menuLogoutButton:hover {
+  background: rgba(64, 24, 24, 0.5);
+}
+
+.discord3i {
+  border: 0.3px rgb(79, 79, 192) solid;
+  background-color: rgba(79, 79, 192, 0.13);
+  box-shadow: 0 0 2px rgb(79, 79, 192);
+  transition: all 0.5s ease;
+}
+
+.discord3i:hover {
+  background-color: rgba(79, 79, 192, 0.208);
+  box-shadow: 0 0 3px rgb(79, 79, 192);
+}
+
+.discord3i span {
+  color: rgb(115, 115, 217);
+  text-shadow: 1px 1px 3px rgb(79, 79, 192);
+}
+
+.discord3i .menu-icon {
+  color: rgb(115, 115, 217);
+  text-shadow: 1px 1px 3px rgb(79, 79, 192);
+}
+
+.menuLogoutButton li span,
+.menuLogoutButton li .menu-icon {
+  color: #9a3f4c;
+}
+
+.menu-icon {
+  padding-left: 5px;
+  font-size: 17px;
+}
+
+/* Navigation Sidebar */
+.menu h4 {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin: 15px 0 8px 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 7rem 12px 12px;
+  margin-bottom: 5px;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: 0.3s;
+  background: rgba(255, 255, 255, 0.05);
+  box-sizing: border-box; 
+}
+
+.nav-link.active {
+  color: #9a3f4c;
+  font-weight: bold;
+  border-left: 4px solid #9a3f4c;
+  background-color: #401818;
+}
+
+.nav-link:hover {
+  background: rgba(154, 63, 76, 0.4);
+  transform: scale(1.05);
+}
+
+.nav-link svg {
+  margin-right: 10px;
+}
+
+/* زر تسجيل الخروج */
+.logout-btn {
+  width: 100%;
+  background: rgba(64, 24, 24, 0.3);
+  padding: 15px;
+  color: #9a3f4c;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.logout-btn:hover {
+  background: rgba(64, 24, 24, 0.5);
+  transform: scale(1.05);
+}
+
+/* Dashboard Wrapper */
+.dashboard-wrapper {
+  flex: 1;
+  background: linear-gradient(135deg, #0d0d0d, #160b0c);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+}
+
+/* المحتوى الرئيسي داخل الـ Wrapper */
+.content-container {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.dashboard-content {
+  padding: 25px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* تنسيق نص الـ Terms */
+.terms-content {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 25px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+  line-height: 1.7;
+  max-height: 70vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(154, 63, 76, 0.6) rgba(255, 255, 255, 0.1);
+}
+
+.terms-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terms-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.terms-content::-webkit-scrollbar-thumb {
+  background: rgba(154, 63, 76, 0.6);
+  border-radius: 8px;
+}
+
+.terms-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(154, 63, 76, 0.8);
+}
+
+/* العنوان */
+.title {
+  font-size: 2rem;
+  color: #9a3f4c;
+  font-weight: bold;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  width: 100%;
+}
+
+/* قسم الكروت ومربع Analysis */
+.cards-grid {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* تصميم الكروت */
+.stat-card {
+  position: relative;
+  background: none;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  color: white;
+  padding: 20px;
+  z-index: 1;
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(144,53,59,0.086) 0%, rgba(190,110,110,0) 41%, rgba(253,187,45,0) 100%);
+  z-index: -1;
+}
+
+@keyframes gradientChange {
+  from {
+    background: linear-gradient(0deg, rgba(144,53,59,0.086) 0%, rgba(190,110,110,0) 41%, rgba(253,187,45,0) 100%);
+  }
+  to {
+    background: linear-gradient(0deg, rgba(144,53,59,0.378) 0%, rgba(190,110,110,0) 41%, rgba(253,187,45,0) 100%);
+  }
+}
+
+.stat-card:hover::before {
+  animation: gradientChange 0.3s forwards;
+}
+
+.stat-card:hover {
+  transform: scale(1.05);
+}
+
+.card-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #9a3f4c;
+}
+
+.icon-bg {
+  position: absolute;
+  top: 60%;
+  left: 15%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-size: 120px;
+  z-index: 1;
+  color: #9a3f4c2c;
+  pointer-events: none;
+  transition: transform 0.7s ease, font-size 0.5s ease;
+}
+
+.stat-card:hover .icon-bg {
+  font-size: 150px;
+  transform: translate(-50%, -50%) rotate(-10deg) scale(1.2);
+}
+
+/* مربع Analysis (Chart Box) */
+.chart-box {
+  background: linear-gradient(0deg, rgba(144,53,59,0.086) 0%, rgba(190,110,110,0) 41%, rgba(144,53,59,0.086) 100%);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: none;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* عنوان الرسم البياني */
+.chart-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #9a3f4c;
+  padding-bottom: 5px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  width: 100%;
+}
+
+.recharts-cartesian-axis-tick {
+  font-size: 0.9rem;
+  fill: #ccc;
+}
+
+.recharts-tooltip-wrapper {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px;
+  padding: 10px;
+  backdrop-filter: blur(8px);
+}
+
+
+.error-container {
+  text-align: center;
+  background: linear-gradient(0deg, rgba(144,53,59,0.086) 0%, rgba(190,110,110,0) 41%, rgba(144,53,59,0.086) 100%);
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 500px; /* يحد من عرض الرسالة */
+  
+  /* مركز العنصر في الصفحة */
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.error-message {
+  color: #973746;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.discord-login-btn {
+  background: #9a3f4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+    width: fit-content; /* يجعل الزر بحجم المحتوى فقط */
+  margin: 0 auto; /* يوسّط الزر */
+}
+
+.discord-login-btn:hover {
+  background: #822d3b;
+}
+
+
+/* ================================================
+   Media Queries - تحسين شامل للواجهات
+   ================================================ */
+
+/* الشاشات الكبيرة جدًا (1200px فما فوق) */
+@media (min-width: 1200px) {
+  .dashboard-wrapper {
+    padding: 25px;
+  }
+}
+
+/* الشاشات الكبيرة (أقل من 1200px) */
+@media (max-width: 1199px) {
+  .dashboard-wrapper {
+    padding: 20px;
+  }
+}
+
+/* الشاشات المتوسطة (أقل من 992px) */
+@media (max-width: 991px) {
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* الشاشات الصغيرة (أقل من 768px) */
+@media (max-width: 767px) {
+  .sidebar {
+    width: 100%;
+    padding: 10px;
+  }
+  .dashboard-wrapper {
+    margin: 0;
+    width: 100%;
+    padding: 15px;
+  }
+  .nav-link {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  .error-container {
+    top: 50%;
+  }
+}
+
+@media (max-width: 575px) {
+  /* تحويل الـ Sidebar إلى Navbar ثابت منظم */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 5px 10px;
+    background: linear-gradient(135deg, #0b0b0b, #160b0c);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: stretch;
+  }
+  
+  /* الصف الأول: الشعار */
+  .logo-section {
+    order: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 0;
+  }
+  .title {
+    margin-top: 30px;
+  }
+  
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .logo-text {
+    display: none; /* إخفاء نص اللوجو لتوفير مساحة */
+  }
+  
+  /* الصف الثاني: مربع البروفايل */
+  .user-profile-box {
+    order: 2;
+    align-self: flex-start;
+    margin: 0;
+  }
+  
+  .user-profile-box img {
+    width: 23px;
+    height: 23px;
+  }
+  
+  .user-profile-info .user-name {
+    font-size: 0.6rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .user-profile-info .user-role {
+    font-size: 0.6rem;
+  }
+  
+  /* الصف الثالث: قائمة الصفحات (الأزرار) */
+  .menu {
+    order: 3;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: flex-start;
+    margin: 0;
+  }
+  
+  .nav-link {
+    padding: 3px 5px;
+    font-size: 0.7rem;
+  }
+  
+  /* تصغير زر تسجيل الخروج */
+  .logout-btn {
+    padding: 3px 5px;
+    font-size: 0.7rem;
+  }
+  
+  /* تضمين وتعديل dropdown menu */
+  .dropdown-menu {
+    font-size: 0.6rem;
+    padding: 5px;
+    width: 150px;
+    border-radius: 4px;
+  }
+  
+  .dropdown-menu .dropdown-section ul li {
+    padding: 3px 0;
+    font-size: 0.6rem;
+  }
+  
+  /* تعيين ارتفاع ثابت للحاوية الرئيسية لتعويض الـ Navbar */
+  .dashboard-container {
+    margin-top: 80px;
+    flex-direction: column;
+    height: calc(100vh - 80px);
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch; /* تمرير سلس على الأجهزة المحمولة */
+  }
+
+  .menu h4 {
+    display: none;
+  }
+
+  .error-container {
+    top: 30%;
+  }
+  
+  .dashboard-wrapper {
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .content-container {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+}

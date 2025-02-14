@@ -1,0 +1,17 @@
+[
+    {
+      "name": "Team Meeting",
+      "date": "2025-02-15",
+      "time": "10:00 AM",
+      "location": "Zoom",
+      "description": "Weekly team sync meeting"
+    },
+    {
+      "name": "Client Call",
+      "date": "2025-02-16",
+      "time": "3:00 PM",
+      "location": "Google Meet",
+      "description": "Discussion with client about project updates"
+    }
+  ]
+  

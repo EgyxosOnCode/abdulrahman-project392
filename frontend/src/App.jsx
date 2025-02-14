@@ -7,13 +7,13 @@ const App = () => {
     <Router>
       <div className="app-container">
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="https://egyxosoncode.github.io/abdulrahman-project392/" element={<Login />} />
           
           {/* عند الدخول إلى /dashboard مباشرة، يتم التوجيه إلى /dashboard/statistics */}
-          <Route path="/dashboard" element={<Navigate to="/dashboard/statistics" replace />} />
+          <Route path="https://egyxosoncode.github.io/abdulrahman-project392/dashboard" element={<Navigate to="/dashboard/statistics" replace />} />
 
           {/* صفحات الـ Dashboard */}
-          <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="https://egyxosoncode.github.io/abdulrahman-project392/dashboard/*" element={<Dashboard />} />
         </Routes>
       </div>
     </Router>
